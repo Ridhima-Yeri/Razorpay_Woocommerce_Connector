@@ -193,4 +193,4 @@ For production deployment, the connector should use:
 
 This implementation uses publicly accessible WooCommerce REST API functionality and does not bypass access controls or access private data outside the configured merchant account.
 
-##Local environment note: The connector is configured to authenticate against WooCommerce using environment-provided REST API credentials. In my local WooCommerce environment, authenticated REST requests currently return HTTP 401 despite valid credentials; the connector's authentication and error-handling logic is implemented accordingly.
+## Local environment note: The connector is configured to authenticate against WooCommerce using environment-provided REST API credentials. In my local WooCommerce environment, authenticated REST requests currently return HTTP 401 despite valid credentials; the connector's authentication and error-handling logic is implemented accordingly.
