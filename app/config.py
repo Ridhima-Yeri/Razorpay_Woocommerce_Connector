@@ -18,3 +18,7 @@ if not WOOCOMMERCE_CONSUMER_KEY:
 
 if not WOOCOMMERCE_CONSUMER_SECRET:
     raise ValueError("WOOCOMMERCE_CONSUMER_SECRET is not configured")
+
+print("WooCommerce URL:", WOOCOMMERCE_URL)
+print("Consumer Key loaded:", bool(WOOCOMMERCE_CONSUMER_KEY))
+print("Consumer Secret loaded:", bool(WOOCOMMERCE_CONSUMER_SECRET))

@@ -1,4 +1,5 @@
 from fastapi import FastAPI, HTTPException, Query
+from fastapi.responses import HTMLResponse
 from pydantic import BaseModel, Field
 
 from app.woo_client import WooCommerceClient
@@ -14,9 +15,59 @@ app = FastAPI(
 )
 
 
+@app.get("/", include_in_schema=False)
+def root():
+    return HTMLResponse(
+        content="""
+        <html>
+            <head>
+                <title>WooCommerce Connector</title>
+                <style>
+                    body {
+                        font-family: Arial, sans-serif;
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+                        height: 100vh;
+                        margin: 0;
+                        background: #f5f7fb;
+                    }
+                    .card {
+                        text-align: center;
+                        padding: 32px 40px;
+                        background: white;
+                        border-radius: 12px;
+                        box-shadow: 0 8px 24px rgba(0,0,0,0.1);
+                    }
+                    button {
+                        background: #2563eb;
+                        color: white;
+                        border: none;
+                        border-radius: 8px;
+                        padding: 12px 20px;
+                        font-size: 16px;
+                        cursor: pointer;
+                    }
+                    a {
+                        text-decoration: none;
+                        color: white;
+                    }
+                </style>
+            </head>
+            <body>
+                <div class="card">
+                    <h2>WooCommerce Connector</h2>
+                    <button>
+                        <a href="http://127.0.0.1:8000/docs">Open API Docs</a>
+                    </button>
+                </div>
+            </body>
+        </html>
+        """
+    )
+
+
 woo_client = WooCommerceClient()
-
-
 
 
 class HealthResponse(BaseModel):
