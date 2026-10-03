@@ -17,9 +17,7 @@ app = FastAPI(
 woo_client = WooCommerceClient()
 
 
-# ============================================================
-# RESPONSE MODELS
-# ============================================================
+
 
 class HealthResponse(BaseModel):
     status: str = Field(
@@ -90,9 +88,7 @@ class Inventory(BaseModel):
     )
 
 
-# ============================================================
-# HEALTH
-# ============================================================
+#Health
 
 @app.get(
     "/health",
@@ -106,9 +102,7 @@ def health():
     }
 
 
-# ============================================================
-# PRODUCT ENDPOINTS
-# ============================================================
+#Product Endpoints
 
 @app.get(
     "/products",
@@ -141,8 +135,7 @@ def list_products(
         )
 
 
-# IMPORTANT:
-# /products/search MUST appear BEFORE /products/{product_id}
+
 
 @app.get(
     "/products/search",
@@ -195,9 +188,7 @@ def get_product(product_id: int):
         )
 
 
-# ============================================================
-# ORDER ENDPOINTS
-# ============================================================
+#Order endpoints
 
 @app.get(
     "/orders",
@@ -233,8 +224,7 @@ def list_orders(
         )
 
 
-# IMPORTANT:
-# /orders/search MUST appear BEFORE /orders/{order_id}
+
 
 @app.get(
     "/orders/search",
@@ -287,9 +277,7 @@ def get_order(order_id: int):
         )
 
 
-# ============================================================
-# INVENTORY
-# ============================================================
+#Inventory 
 
 @app.get(
     "/inventory/{product_id}",

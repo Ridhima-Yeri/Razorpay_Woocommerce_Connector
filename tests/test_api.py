@@ -6,10 +6,7 @@ from app.main import app, woo_client
 client = TestClient(app)
 
 
-# ============================================================
-# MOCK DATA
-# ============================================================
-
+#Mock data 
 MOCK_PRODUCT = {
     "id": 15,
     "name": "Classic Cotton T-Shirt",
@@ -36,10 +33,7 @@ MOCK_INVENTORY = {
 }
 
 
-# ============================================================
-# HEALTH TEST
-# ============================================================
-
+#Health test
 def test_health():
     response = client.get("/health")
 
@@ -51,9 +45,7 @@ def test_health():
     assert data["service"] == "woocommerce-agent-connector"
 
 
-# ============================================================
-# PRODUCT TESTS
-# ============================================================
+#Product Test
 
 def test_products_endpoint(monkeypatch):
 
@@ -126,9 +118,7 @@ def test_product_search(monkeypatch):
     assert data[0]["name"] == "Classic Cotton T-Shirt"
 
 
-# ============================================================
-# ORDER TESTS
-# ============================================================
+#Order test
 
 def test_orders_endpoint(monkeypatch):
 
@@ -203,10 +193,7 @@ def test_order_search(monkeypatch):
     assert isinstance(data, list)
 
 
-# ============================================================
-# INVENTORY TEST
-# ============================================================
-
+#Inventory test
 def test_inventory_endpoint(monkeypatch):
 
     def mock_get_inventory(product_id):
